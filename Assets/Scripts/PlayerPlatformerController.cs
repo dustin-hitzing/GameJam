@@ -8,20 +8,22 @@ public class PlayerPlatformerController : PhysicsObject
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    public Vector2 move;
+    private float lastMoveX = 0;
 
     // Use this for initialization
     void Awake()
     {
-        //spriteRenderer = GetComponent<SpriteRenderer>();
-        //animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     protected override void ComputeVelocity()
     {
-        Vector2 move = Vector2.zero;
-
+        move = Vector2.zero;
+        
         move.x = Input.GetAxis("Horizontal");
-
+        
         if (Input.GetButtonDown("Jump") && grounded)
         {
             velocity.y = jumpTakeOffSpeed;
@@ -34,14 +36,19 @@ public class PlayerPlatformerController : PhysicsObject
             }
         }
 
-        //bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
-        //if (flipSprite)
-        //{
-        //    spriteRenderer.flipX = !spriteRenderer.flipX;
-        //}
+        if (move.x != 0)
+        {
+            bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
+            if (flipSprite)
+            {
+                spriteRenderer.flipX = !spriteRenderer.flipX;
+            }
+        }
+        
+        Debug.Log(spriteRenderer.flipX);
+        Debug.Log(move.x);
 
-        //animator.SetBool("grounded", grounded);
-        //animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+        animator.SetFloat("xVelocity", Mathf.Abs(velocity.x) / maxSpeed);
 
         targetVelocity = move * maxSpeed;
     }
