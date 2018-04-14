@@ -40,7 +40,8 @@ public class ProjectileController : MonoBehaviour {
 		}
 	}
 
-	void ThrowProjectile() {
+	void ThrowProjectile()
+	{
 		Vector2 firePointPosition = new Vector2(firePoint.position.x, firePoint.position.y);
 		GameObject shotFired = (GameObject) Instantiate(projectile, firePointPosition, firePoint.transform.rotation);
 		
@@ -50,7 +51,8 @@ public class ProjectileController : MonoBehaviour {
 		counter.text = shotsAvailable.ToString();
 	}
 
-	void RecallProjectile() {
+	void RecallProjectile()
+	{
 		GameObject last = projectiles.Last();
 		projectiles.RemoveAt(projectiles.Count - 1);
 		Destroy(last);
