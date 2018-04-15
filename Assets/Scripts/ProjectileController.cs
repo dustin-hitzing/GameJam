@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class ProjectileController : MonoBehaviour {
-	public List<GameObject> projectiles = new List<GameObject>();
+	public float projectileSpeed = 2000f;
 	public int shotsAvailable = 15;
 	// public LayerMask collisionLayers;
 	public GameObject projectile;
+	List<GameObject> projectiles = new List<GameObject>();
 	Transform firePoint;
+
 
 	// public Vector2 offset = new Vector2(0.4f,0.1f);
 	// public float cooldown = 1f;
@@ -16,7 +20,7 @@ public class ProjectileController : MonoBehaviour {
 	void Awake() 
 	{
 		firePoint = transform.Find("FirePoint");
-		if (firePoint == null) 
+		if (firePoint == null)
 		{
 			Debug.LogError("No fire point.");
 		}
@@ -36,16 +40,28 @@ public class ProjectileController : MonoBehaviour {
 		}
 	}
 
-	void ThrowProjectile() {
+	void ThrowProjectile()
+	{
 		Vector2 firePointPosition = new Vector2(firePoint.position.x, firePoint.position.y);
-		Instantiate(projectile, firePointPosition, firePoint.transform.rotation);
+		GameObject shotFired = (GameObject) Instantiate(projectile, firePointPosition, firePoint.transform.rotation);
+		
+		Vector2 direction = firePoint.transform.right;
+		if (transform.parent.localScale.x < 0) {
+			direction *= -firePoint.transform.right;
+			shotFired.transform.localScale = new Vector2(shotFired.transform.localScale.x * -1, shotFired.transform.localScale.y);
+		}
 
-		projectiles.Add(projectile);
+		shotFired.GetComponent<Rigidbody2D>().AddForce(direction * projectileSpeed);
+
+		projectiles.Add(shotFired);
 		shotsAvailable--;
 	}
 
-	void RecallProjectile() {
-		//To Do.
-		Debug.Log("Recalling projectile");
+	void RecallProjectile()
+	{
+		GameObject last = projectiles.Last();
+		projectiles.RemoveAt(projectiles.Count - 1);
+		Destroy(last);
+		shotsAvailable++;
 	}
 }

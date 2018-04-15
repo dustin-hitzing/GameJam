@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 public class PlayerPlatformerController : PhysicsObject
 {
@@ -9,7 +10,9 @@ public class PlayerPlatformerController : PhysicsObject
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     public Vector2 move;
+    private float lastMoveX = 0;
 
+    // Use this for initialization
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -21,7 +24,6 @@ public class PlayerPlatformerController : PhysicsObject
         move = Vector2.zero;
         
         move.x = Input.GetAxis("Horizontal");
-
         
         if (Input.GetButtonDown("Jump") && grounded)
         {
@@ -34,20 +36,15 @@ public class PlayerPlatformerController : PhysicsObject
                 velocity.y = velocity.y * 0.5f;
             }
         }
-        animator.SetBool("grounded", grounded);
-        if (move.x != 0)
+
+        if (velocity.x > 0 && transform.localScale.x < 0 || velocity.x < 0 && transform.localScale.x > 0 )
         {
-            bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
-            if (flipSprite)
-            {
-                spriteRenderer.flipX = !spriteRenderer.flipX;
-            }
+            transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
         }
         
-        Debug.Log(string.Format("Grounded is {0}", grounded));
 
         animator.SetFloat("xVelocity", Mathf.Abs(velocity.x) / maxSpeed);
-        
+
         targetVelocity = move * maxSpeed;
     }
 }
