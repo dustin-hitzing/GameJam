@@ -23,6 +23,5 @@ public class CameraFollow : MonoBehaviour
             smoothedPosition = Vector3.MoveTowards(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
             transform.position = smoothedPosition;
         }
-        
     }
 }
