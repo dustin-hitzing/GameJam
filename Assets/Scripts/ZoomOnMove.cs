@@ -5,7 +5,7 @@ using UnityEngine;
 public class ZoomOnMove : MonoBehaviour
 {
     public Camera mainCamera;
-    public PlayerPlatformerController player;
+    public NewPlayerController player;
     public float cameraMaxSize = 20f;
     public float cameraStartSize = 15f;
     public float cameraAdjustmentSpeed = 0.5f;
@@ -13,7 +13,7 @@ public class ZoomOnMove : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        player = GetComponent<PlayerPlatformerController>();
+        player = GetComponent<NewPlayerController>();
         mainCamera.orthographicSize = cameraStartSize;
         cameraFollow = mainCamera.GetComponent<CameraFollow>();
     }
@@ -33,7 +33,10 @@ public class ZoomOnMove : MonoBehaviour
         {
             if (mainCamera.orthographicSize > cameraStartSize)
             {
-                mainCamera.orthographicSize -= cameraAdjustmentSpeed;
+                if (Mathf.Abs(player.move.x) == 0)
+                {
+                    mainCamera.orthographicSize -= cameraAdjustmentSpeed;
+                }
             }
             
         }

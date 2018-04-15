@@ -46,8 +46,9 @@ public class ProjectileController : MonoBehaviour {
 		GameObject shotFired = (GameObject) Instantiate(projectile, firePointPosition, firePoint.transform.rotation);
 		
 		Vector2 direction = firePoint.transform.right;
-		if (transform.parent.localScale.x < 0) {
-			direction *= -firePoint.transform.right;
+		if (transform.parent.localScale.x < 0)
+        {
+			direction = -firePoint.transform.right;
 			shotFired.transform.localScale = new Vector2(shotFired.transform.localScale.x * -1, shotFired.transform.localScale.y);
 		}
 
