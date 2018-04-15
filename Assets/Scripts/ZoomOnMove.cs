@@ -20,6 +20,11 @@ public class ZoomOnMove : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
+        if (cameraFollow == null)
+        {
+            return;
+        }
+
         var xDiff = Mathf.Abs(cameraFollow.xDifference);
         var yDiff = Mathf.Abs(cameraFollow.yDifference);
 		if (Mathf.Abs(player.move.x) > 0 && xDiff > 3 || yDiff > 3)

@@ -6,9 +6,7 @@ using GameJam.States;
 
 public class EnemyAI : MonoBehaviour
 {
-    public CircleCollider2D sight;
     public GameObject target;
-    public BoxCollider2D targetCollider;
     public float enemySpeed = 2f;
     public Vector3 offset = new Vector3(5,0,0);
     public Vector2 smoothedPosition;
@@ -26,9 +24,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(currentState);
         SeePlayer();
-        Debug.Log(currentState);
         switch (currentState)
         {
             case EnemyState.Idle:
@@ -56,11 +52,9 @@ public class EnemyAI : MonoBehaviour
     public void KOEnemy()
     {
         currentState = EnemyState.KO;
-        Debug.Log(anim);
         if (anim != null && !anim.GetBool("isPunctured"))
         {
             anim.SetBool("isPunctured", true);
-            Debug.Log(string.Format("HEY THIS THING IS WORKING INSIDE THE IF STATEMENT {0}", anim));
         }
 
     }

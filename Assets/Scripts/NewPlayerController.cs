@@ -8,7 +8,6 @@ public class NewPlayerController : MonoBehaviour
     public Vector2 move;
     public float jumpVelocity = 10000f;
     bool grounded;
-    Collider2D getTag;
     public LayerMask groundLayer;
     public LayerMask projectileLayer;
     public Animator anim;
@@ -70,16 +69,9 @@ public class NewPlayerController : MonoBehaviour
         //Debug.DrawRay(position,direction, Color.green);
         grounded = hit.collider != null || projectileHit.collider != null || projectileHitLeft.collider != null || projectileHitRight.collider != null;
 
-        //Debug.DrawLine(position, direction * distance, Color.red);
-        if (hit.collider != null)
-        {
-            //Debug.DrawLine(position, hit.point, Color.green);
-            
-        }
         if (projectileHit.collider != null || projectileHitLeft.collider != null || projectileHitRight.collider !=null)
         {
             Debug.DrawLine(position, projectileHit.point, Color.red);
         }
-        Debug.Log(grounded);
     }
 }

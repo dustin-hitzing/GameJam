@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 8
+  serializedVersion: 9
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -39,6 +39,7 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -54,11 +55,10 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 10
     m_Resolution: 2
     m_BakeResolution: 40
-    m_TextureWidth: 1024
-    m_TextureHeight: 1024
+    m_AtlasSize: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -164,6 +164,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -233,29 +234,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &482285945 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1935442797777034, guid: 47f8e5fdcec385b40aa9e45e6b430d07,
-    type: 2}
-  m_PrefabInternal: {fileID: 1562080655}
---- !u!114 &482285946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 482285945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63bf44909a391ec43ab224a581256e15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1132018788}
-  smoothSpeed: 25
-  offset: {x: 0, y: 0, z: 0}
-  smoothedPosition: {x: 0, y: 0, z: 0}
-  xDifference: 0
-  yDifference: 0
-  movementThreshold: 3
 --- !u!4 &1132018788 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4602959606226722, guid: 67a77885b642dfb42bc42d4191f341d0,
@@ -357,27 +335,7 @@ Prefab:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1884042615}
-    - target: {fileID: 4697482593286614, guid: 67a77885b642dfb42bc42d4191f341d0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2.17
-      objectReference: {fileID: 0}
-    - target: {fileID: 114616530906693270, guid: 67a77885b642dfb42bc42d4191f341d0,
-        type: 2}
-      propertyPath: projectileLayer.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 50303580335035594, guid: 67a77885b642dfb42bc42d4191f341d0,
-        type: 2}
-      propertyPath: m_Simulated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114616530906693270, guid: 67a77885b642dfb42bc42d4191f341d0,
-        type: 2}
-      propertyPath: jumpVelocity
-      value: 30000
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114462398484302172, guid: 67a77885b642dfb42bc42d4191f341d0, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67a77885b642dfb42bc42d4191f341d0, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1562080655
@@ -419,22 +377,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114455629378122048, guid: 47f8e5fdcec385b40aa9e45e6b430d07,
+    - target: {fileID: 114298237450936342, guid: 47f8e5fdcec385b40aa9e45e6b430d07,
         type: 2}
       propertyPath: target
       value: 
       objectReference: {fileID: 1132018788}
-    - target: {fileID: 1935442797777034, guid: 47f8e5fdcec385b40aa9e45e6b430d07, type: 2}
-      propertyPath: m_Name
-      value: Main Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 114455629378122048, guid: 47f8e5fdcec385b40aa9e45e6b430d07,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114455629378122048, guid: 47f8e5fdcec385b40aa9e45e6b430d07, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 47f8e5fdcec385b40aa9e45e6b430d07, type: 2}
   m_IsPrefabParent: 0
 --- !u!20 &1884042615 stripped

@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 61036926576387484}
   - component: {fileID: 114742239898613142}
   - component: {fileID: 95300178895802486}
-  - component: {fileID: 114462398484302172}
   - component: {fileID: 114616530906693270}
   m_Layer: 10
   m_Name: SuperEpicMailGuy
@@ -101,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1103347449298668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.97, y: 1.75, z: 0}
+  m_LocalPosition: {x: -257.48, y: -8.1, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0}
   m_Children:
   - {fileID: 4097330351347388}
@@ -129,7 +128,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1221619819676604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.53, y: 0.21, z: 0}
+  m_LocalPosition: {x: 2.17, y: 0.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4097330351347388}
@@ -197,6 +196,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114312983784709510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -211,24 +211,6 @@ MonoBehaviour:
   projectileSpeed: 1500
   shotsAvailable: 15
   projectile: {fileID: 1767738326202832, guid: 795ab9a089919475f9bdb6f3833ac8f7, type: 2}
---- !u!114 &114462398484302172
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1103347449298668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4032b7715e3444b43a28622eb46cda68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  move: {x: 0, y: 0}
-  jumpVelocity: 10000
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  anim: {fileID: 0}
-  speed: 10
 --- !u!114 &114616530906693270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -241,10 +223,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: {x: 0, y: 0}
-  jumpVelocity: 10000
+  jumpVelocity: 30000
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  projectileLayer:
+    serializedVersion: 2
+    m_Bits: 512
   anim: {fileID: 0}
   speed: 10
 --- !u!114 &114742239898613142
@@ -277,6 +262,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -295,8 +281,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1312611815
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1ae8b9a3e2b12564b9b90d4952f2aa5e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -321,6 +307,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:

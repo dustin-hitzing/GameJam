@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 20029339449962328}
   - component: {fileID: 124154533532532268}
   - component: {fileID: 81991519254793778}
-  - component: {fileID: 114455629378122048}
+  - component: {fileID: 114298237450936342}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1935442797777034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.31, z: -10}
+  m_LocalPosition: {x: -247.8, y: 1.31, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,7 +52,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -86,7 +86,7 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1935442797777034}
   m_Enabled: 1
---- !u!114 &114455629378122048
+--- !u!114 &114298237450936342
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  smoothSpeed: 4
-  offset: {x: 0, y: 0, z: -1}
+  smoothSpeed: 25
+  offset: {x: 0, y: 0, z: 0}
   smoothedPosition: {x: 0, y: 0, z: 0}
   xDifference: 0
   yDifference: 0

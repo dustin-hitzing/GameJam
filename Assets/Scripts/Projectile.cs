@@ -7,7 +7,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
 	// float anchorDepth = 2f;
-	public LayerMask canHit;
+	// public LayerMask canHit;
 	Rigidbody2D rb;
 	bool hit = false;
     public GameObject enemy;
