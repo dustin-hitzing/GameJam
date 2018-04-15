@@ -15,7 +15,7 @@ public class Projectile : MonoBehaviour {
 	void Start () 
 	{
 		rb = GetComponent<Rigidbody2D> ();
-		rb.AddForce(transform.up * speed);
+		// rb.AddForce(transform.right * speed);
 		Physics2D.SetLayerCollisionMask(gameObject.layer, canHit);
 	}
 

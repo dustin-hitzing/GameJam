@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212394366887960234}
   - component: {fileID: 114116850937064790}
   m_Layer: 0
-  m_Name: sword
+  m_Name: gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,14 +62,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1479642089169976}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.38, y: -0.78, z: 5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.06, y: 0.31, z: 5}
+  m_LocalScale: {x: 1.3333335, y: 1.3333335, z: 1}
   m_Children:
   - {fileID: 4309183822604430}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114116850937064790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,8 +83,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles: []
   shotsAvailable: 15
-  projectileSpeed: 500
   projectile: {fileID: 1767738326202832, guid: 795ab9a089919475f9bdb6f3833ac8f7, type: 2}
+  counter: {fileID: 0}
 --- !u!212 &212394366887960234
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -120,7 +120,7 @@ SpriteRenderer:
   m_SortingLayerID: -1312611815
   m_SortingLayer: 1
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: a8478c72c869e5c41a965da88f2de93b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d62d19dcfd0b6428e82d1bdff90c7238, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

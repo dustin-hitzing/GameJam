@@ -5,12 +5,12 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class ProjectileController : MonoBehaviour {
-	public List<GameObject> projectiles = new List<GameObject>();
 	public int shotsAvailable = 15;
 	// public LayerMask collisionLayers;
 	public GameObject projectile;
-	public Text counter;
+	List<GameObject> projectiles = new List<GameObject>();
 	Transform firePoint;
+
 
 	// public Vector2 offset = new Vector2(0.4f,0.1f);
 	// public float cooldown = 1f;
@@ -23,7 +23,6 @@ public class ProjectileController : MonoBehaviour {
 		{
 			Debug.LogError("No fire point.");
 		}
-		counter.text = shotsAvailable.ToString();
 	}
 
 	// Update is called once per frame
@@ -45,10 +44,15 @@ public class ProjectileController : MonoBehaviour {
 		Vector2 firePointPosition = new Vector2(firePoint.position.x, firePoint.position.y);
 		GameObject shotFired = (GameObject) Instantiate(projectile, firePointPosition, firePoint.transform.rotation);
 		
+		Vector2 direction = firePoint.transform.right;
+		if (transform.parent.localScale.x < 0) {
+			direction *= -firePoint.transform.right;
+		}
+
+		shotFired.GetComponent<Rigidbody2D>().AddForce(direction * 2000f);
 
 		projectiles.Add(shotFired);
 		shotsAvailable--;
-		counter.text = shotsAvailable.ToString();
 	}
 
 	void RecallProjectile()
@@ -57,6 +61,5 @@ public class ProjectileController : MonoBehaviour {
 		projectiles.RemoveAt(projectiles.Count - 1);
 		Destroy(last);
 		shotsAvailable++;
-		counter.text = shotsAvailable.ToString();
 	}
 }
