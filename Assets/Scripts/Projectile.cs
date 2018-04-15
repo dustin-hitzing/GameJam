@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
 public class Projectile : MonoBehaviour {
-	public float speed = 500f;
 	// float anchorDepth = 2f;
 	public LayerMask canHit;
 	Rigidbody2D rb;
@@ -15,7 +14,6 @@ public class Projectile : MonoBehaviour {
 	void Start () 
 	{
 		rb = GetComponent<Rigidbody2D> ();
-		// rb.AddForce(transform.right * speed);
 		Physics2D.SetLayerCollisionMask(gameObject.layer, canHit);
 	}
 

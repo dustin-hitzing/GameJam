@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class ProjectileController : MonoBehaviour {
+	public float projectileSpeed = 2000f;
 	public int shotsAvailable = 15;
 	// public LayerMask collisionLayers;
 	public GameObject projectile;
@@ -47,9 +48,10 @@ public class ProjectileController : MonoBehaviour {
 		Vector2 direction = firePoint.transform.right;
 		if (transform.parent.localScale.x < 0) {
 			direction *= -firePoint.transform.right;
+			shotFired.transform.localScale = new Vector2(shotFired.transform.localScale.x * -1, shotFired.transform.localScale.y);
 		}
 
-		shotFired.GetComponent<Rigidbody2D>().AddForce(direction * 2000f);
+		shotFired.GetComponent<Rigidbody2D>().AddForce(direction * projectileSpeed);
 
 		projectiles.Add(shotFired);
 		shotsAvailable--;
