@@ -27728,6 +27728,21 @@ Prefab:
       propertyPath: currentState
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114662359559293162, guid: d29df4863cd956c44a04d3072f9b3eb6,
+        type: 2}
+      propertyPath: playerDie
+      value: 
+      objectReference: {fileID: 8300000, guid: ad2ce93db87974a0ca566a6b460a8af4, type: 3}
+    - target: {fileID: 114662359559293162, guid: d29df4863cd956c44a04d3072f9b3eb6,
+        type: 2}
+      propertyPath: MusicSource
+      value: 
+      objectReference: {fileID: 154761675}
+    - target: {fileID: 114662359559293162, guid: d29df4863cd956c44a04d3072f9b3eb6,
+        type: 2}
+      propertyPath: enemyScream
+      value: 
+      objectReference: {fileID: 8300000, guid: 0a7e8a37620b2441480e43d4275eda1c, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d29df4863cd956c44a04d3072f9b3eb6, type: 2}
   m_IsPrefabParent: 0
@@ -27792,6 +27807,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4539ada0cfa75458d840a65c2b50b608, type: 2}
   m_IsPrefabParent: 0
+--- !u!82 &154761675 stripped
+AudioSource:
+  m_PrefabParentObject: {fileID: 82528040176311574, guid: 67a77885b642dfb42bc42d4191f341d0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1431427557}
 --- !u!1 &239816826 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1103347449298668, guid: 67a77885b642dfb42bc42d4191f341d0,

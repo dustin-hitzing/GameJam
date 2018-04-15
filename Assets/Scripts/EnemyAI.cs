@@ -14,6 +14,9 @@ public class EnemyAI : MonoBehaviour
     public LayerMask playerLayer;
     public Animator anim;
     public SpriteRenderer sr;
+    public AudioClip playerDie;
+    public AudioClip enemyScream;
+    public AudioSource MusicSource;
     
 
     public List<Collider2D> projectiles;
@@ -23,6 +26,9 @@ public class EnemyAI : MonoBehaviour
         currentState = EnemyState.Idle;
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+
+        playerDie.LoadAudioData();
+        enemyScream.LoadAudioData();
 	}
 
     private void Update()
@@ -66,14 +72,24 @@ public class EnemyAI : MonoBehaviour
     {
         if (other.gameObject.layer == 9)
         {
+            MusicSource.clip = enemyScream;
+            MusicSource.Play();
             KOEnemy();
             projectiles.Add(other.collider);
         }
-        if (other.gameObject.layer == 10)
+        if (other.gameObject.layer == 10 && currentState != EnemyState.KO)
         {
-            SceneManager.LoadScene("Main");
-               
+            StartCoroutine(DieAndLoadScene());
+            // SceneManager.LoadScene("Main");      
         }
+    }
+
+    IEnumerator DieAndLoadScene()
+    {
+        MusicSource.clip = playerDie;
+        MusicSource.Play();
+        yield return new WaitForSeconds(MusicSource.clip.length);
+        SceneManager.LoadScene("Main");
     }
     private void OnCollisionStay2D(Collision2D other)
     {

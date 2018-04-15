@@ -11,7 +11,9 @@ public class ProjectileController : MonoBehaviour {
 	public GameObject projectile;
 	List<GameObject> projectiles = new List<GameObject>();
 	Transform firePoint;
-
+    public AudioClip shotSound;
+	public AudioClip shotReturnSound;
+    public AudioSource MusicSource;
 
 	// public Vector2 offset = new Vector2(0.4f,0.1f);
 	// public float cooldown = 1f;
@@ -24,17 +26,20 @@ public class ProjectileController : MonoBehaviour {
 		{
 			Debug.LogError("No fire point.");
 		}
+
+		shotSound.LoadAudioData();
+		shotReturnSound.LoadAudioData();
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{	
-		if (Input.GetButtonDown("Fire1") && shotsAvailable > 0) 
+		if (Input.GetButtonDown("Fire1") && shotsAvailable > 0)
 		{
 			ThrowProjectile();
 		}
 
-		if (Input.GetButtonDown("Fire2") && projectiles.Count > 0) 
+		if (Input.GetButtonDown("Fire2") && projectiles.Count > 0)
 		{
 			RecallProjectile();
 		}
@@ -54,12 +59,18 @@ public class ProjectileController : MonoBehaviour {
 
 		shotFired.GetComponent<Rigidbody2D>().AddForce(direction * projectileSpeed);
 
+		MusicSource.clip = shotSound;
+		MusicSource.Play();
+
 		projectiles.Add(shotFired);
 		shotsAvailable--;
 	}
 
 	void RecallProjectile()
 	{
+		MusicSource.clip = shotReturnSound;
+		MusicSource.Play();
+
 		GameObject last = projectiles.Last();
 		projectiles.RemoveAt(projectiles.Count - 1);
 		Destroy(last);
