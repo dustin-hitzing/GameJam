@@ -15,6 +15,7 @@ public class CameraFollow : MonoBehaviour
     
     private void LateUpdate()
     {
+        
         xDifference = target.position.x - transform.position.x;
         yDifference = target.position.y - transform.position.y;
         if (Mathf.Abs(xDifference) > 3 || Mathf.Abs(yDifference) > 3)
@@ -22,6 +23,10 @@ public class CameraFollow : MonoBehaviour
             Vector3 desiredPosition = target.position + offset;
             smoothedPosition = Vector3.MoveTowards(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
             transform.position = smoothedPosition;
+        }
+        if (transform.position.z > -10)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -10);
         }
     }
 }

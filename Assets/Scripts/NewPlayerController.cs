@@ -10,6 +10,7 @@ public class NewPlayerController : MonoBehaviour
     bool grounded;
     Collider2D getTag;
     public LayerMask groundLayer;
+    public LayerMask projectileLayer;
     public Animator anim;
     public float speed = 10f;
     
@@ -44,15 +45,41 @@ public class NewPlayerController : MonoBehaviour
         anim.SetBool("grounded", grounded);
 	}
 
+    //private void OnCollisionEnter2D(Collision2D other)
+    //{
+    //    if (other.gameObject.layer == 8 || other.gameObject.layer == 9)
+    //    {
+    //        grounded = true;
+    //    }
+    //}
+    //private void OnCollisionExit2D(Collision2D other)
+    //{
+    //    grounded = false;
+    //}
+
     void IsGrounded()
     {
         Vector2 position = transform.position;
         Vector2 direction = Vector2.down;
         float distance = 2.0f;
+        float projectileDistance = 2f;
         RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, groundLayer);
-        Debug.DrawRay(position,direction, Color.green);
-        grounded = hit.collider != null;
-        Debug.Log(grounded);
+        RaycastHit2D projectileHit = Physics2D.Raycast(position, direction, projectileDistance, projectileLayer);
+        RaycastHit2D projectileHitLeft = Physics2D.Raycast(position +new Vector2(-1,0), direction, projectileDistance, projectileLayer);
+        RaycastHit2D projectileHitRight = Physics2D.Raycast(position + new Vector2(1, 0), direction, projectileDistance, projectileLayer);
+        //Debug.DrawRay(position,direction, Color.green);
+        grounded = hit.collider != null || projectileHit.collider != null || projectileHitLeft.collider != null || projectileHitRight.collider != null;
 
+        //Debug.DrawLine(position, direction * distance, Color.red);
+        if (hit.collider != null)
+        {
+            //Debug.DrawLine(position, hit.point, Color.green);
+            
+        }
+        if (projectileHit.collider != null || projectileHitLeft.collider != null || projectileHitRight.collider !=null)
+        {
+            Debug.DrawLine(position, projectileHit.point, Color.red);
+        }
+        Debug.Log(grounded);
     }
 }
