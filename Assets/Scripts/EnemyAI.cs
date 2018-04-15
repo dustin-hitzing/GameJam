@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GameJam.States;
-
+using UnityEngine.SceneManagement;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -71,7 +71,8 @@ public class EnemyAI : MonoBehaviour
         }
         if (other.gameObject.layer == 10)
         {
-            
+            SceneManager.LoadScene("Main");
+               
         }
     }
     private void OnCollisionStay2D(Collision2D other)
