@@ -13,6 +13,8 @@ public class EnemyAI : MonoBehaviour
     public EnemyState currentState;
     public LayerMask playerLayer;
     public Animator anim;
+    public SpriteRenderer sr;
+    
 
     public List<Collider2D> projectiles;
 	
@@ -20,6 +22,7 @@ public class EnemyAI : MonoBehaviour
     {
         currentState = EnemyState.Idle;
         anim = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
 	}
 
     private void Update()
@@ -66,6 +69,10 @@ public class EnemyAI : MonoBehaviour
             KOEnemy();
             projectiles.Add(other.collider);
         }
+        if (other.gameObject.layer == 10)
+        {
+            
+        }
     }
     private void OnCollisionStay2D(Collision2D other)
     {
@@ -84,7 +91,11 @@ public class EnemyAI : MonoBehaviour
             {
                 anim.SetBool("isPunctured", false);
             }
-
+            enemySpeed += 2f;
+            if (enemySpeed > 20f)
+            {
+                enemySpeed = 20f;
+            }
             
             currentState = EnemyState.Idle;
             
@@ -115,8 +126,17 @@ public class EnemyAI : MonoBehaviour
 
     void EnemyIsChasing()
    {
-        smoothedPosition = Vector2.MoveTowards(transform.position, target.transform.position - offset, enemySpeed * Time.deltaTime);
+        smoothedPosition = Vector2.MoveTowards(transform.position, target.transform.position, enemySpeed * Time.deltaTime);
         transform.position = smoothedPosition;
+        if (target.transform.position.x > transform.position.x)
+        {
+            sr.flipX = false;
+        }
+        else
+        {
+            sr.flipX = true;
+
+        }
         //Debug.Log("I Was Called");
    }
     
